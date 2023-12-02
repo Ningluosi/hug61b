@@ -85,11 +85,7 @@ public class IntList {
         if (A == null) {
             return B;
         }
-        IntList ptr = A;
-        while (ptr.rest != null)
-            ptr = ptr.rest;
-        
-        ptr.rest = B;
+        A.rest = dcatenate(A.rest, B);
         return A;
     }
 
@@ -102,20 +98,7 @@ public class IntList {
         if (A == null) {
             return B;
         }
-
-        IntList res = new IntList(A.first, null);
-        IntList ptr = res;
-        while (A.rest != null) {
-            ptr.rest = new IntList(A.rest.first, null);
-            A = A.rest;
-            ptr = ptr.rest;
-        }
-        while (B != null) {
-            ptr.rest = new IntList(B.first, null);
-            B = B.rest;
-            ptr = ptr.rest;
-        }
-        return res;
+        return new IntList(A.first, catenate(A.rest, B));
     }
 
 
