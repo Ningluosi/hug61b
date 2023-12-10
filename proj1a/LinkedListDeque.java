@@ -52,25 +52,33 @@ public class LinkedListDeque<T> {
     public void addFirst(T item) {
         ListNode node = new ListNode(sentiel, item, sentiel.next);
 
-        if (size != 0) {
-            sentiel.next.prev = node;
-        }
-        else {
+        if (size == 0) {
             sentiel.prev = node;
         }
+        else {
+            sentiel.next.prev = node;
+        }
         sentiel.next = node;
-
         size++;
     }
 
     /*  Adds an item of type T to the back of the deque */
     public void addLast(T item) {
+        ListNode node = new ListNode(sentiel.prev, item, sentiel);
 
+        if (size == 0) {
+            sentiel.next = node;
+        }
+        else {
+            sentiel.prev.next = node;
+        }
+        sentiel.prev = node;
+        size++;
     }
 
     /* Returns true if deque is empty, false otherwise */
     public boolean isEmpty() {
-        return false;
+        return size == 0 ? true : false;
     }
 
     /* Returns the number of items in the deque */
@@ -80,6 +88,51 @@ public class LinkedListDeque<T> {
 
     /* Prints the items in the deque from first to last, separated by a space */
     public void printDeque() {
+        ListNode p = sentiel.next;
 
+        while (p != sentiel) {
+            System.out.print(p.item + " ");
+            p = p.next;
+        }
+        System.out.println();
+    }
+
+    /*  Removes and returns the item at the front of the deque. If no such item exists, returns null */
+    public T removeFirst() {
+        if (size == 0) {
+            return null;
+        }
+        T ret = sentiel.next.item;
+        sentiel.next = sentiel.next.next;
+        sentiel.next.next.prev = sentiel;
+        size--;
+        return ret;
+    }
+
+    /* Removes and returns the item at the back of the deque. If no such item exists, returns null */
+    public T removeLast() {
+        if (size == 0) {
+            return null;
+        }
+        T ret = sentiel.prev.item;
+        sentiel.prev = sentiel.prev.prev;
+        sentiel.prev.prev.next = sentiel;
+        size--;
+        return ret;
+    }
+
+    /* Gets the item at the given index, where 0 is the front, 1 is the next item,
+       and so forth. If no such item exists, returns null. Must not alter the deque */
+    public T get(int index) {
+        int i = 0;
+        ListNode p = sentiel.next;
+        while (p != sentiel) {
+            if (i == index) {
+                return p.item;
+            }
+            p = p.next;
+            i++;
+        }
+        return null;
     }
 }
