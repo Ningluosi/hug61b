@@ -36,6 +36,14 @@ public class LinkedListDeque<T> {
             this.item = item;
             this.next = next;
         }
+
+        public T getItem(int index) {
+            if (index == 0) {
+                return item;
+            }
+
+            return next.getItem(index - 1);
+        }
     }
 
     private ListNode sentiel;
@@ -134,5 +142,13 @@ public class LinkedListDeque<T> {
             i++;
         }
         return null;
+    }
+
+    public T getRecursive(int index) {
+        if (size == 0 || index >= size) {
+            return null;
+        }
+
+        return sentiel.next.getItem(index);
     }
 }
