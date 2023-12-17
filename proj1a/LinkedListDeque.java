@@ -1,29 +1,3 @@
-/** TODO LIST:
- As your first deque implementation, you’ll build the LinkedListDeque class, which will be linked list based.
-
- Your operations are subject to the following rules:
-
- add and remove operations must not involve any looping or recursion. A single such operation must take “constant time”,
- i.e. execution time should not depend on the size of the deque.
-
- get must use iteration, not recursion.
-
- size must take constant time.
-
- The amount of memory that your program uses at any given time must be proportional to the number of items.
- For example, if you add 10,000 items to the deque, and then remove 9,999 items, the resulting size should be more like a deque with 1 item than 10,000.
- Do not maintain references to items that are no longer in the deque.
-
- Implement all the methods listed above in “The Deque API” section.
-
- In addition, you also need to implement:
-
- public LinkedListDeque(): Creates an empty linked list deque.
-
- public T getRecursive(int index): Same as get, but uses recursion.
-
- */
-
 public class LinkedListDeque<T> {
 
     public class ListNode {
@@ -56,7 +30,6 @@ public class LinkedListDeque<T> {
         size = 0;
     }
 
-    /* Adds an item of type T to the front of the deque */
     public void addFirst(T item) {
         ListNode node = new ListNode(sentiel, item, sentiel.next);
 
@@ -70,7 +43,6 @@ public class LinkedListDeque<T> {
         size++;
     }
 
-    /*  Adds an item of type T to the back of the deque */
     public void addLast(T item) {
         ListNode node = new ListNode(sentiel.prev, item, sentiel);
 
@@ -84,17 +56,14 @@ public class LinkedListDeque<T> {
         size++;
     }
 
-    /* Returns true if deque is empty, false otherwise */
     public boolean isEmpty() {
         return size == 0 ? true : false;
     }
 
-    /* Returns the number of items in the deque */
     public int size() {
         return size;
     }
 
-    /* Prints the items in the deque from first to last, separated by a space */
     public void printDeque() {
         ListNode p = sentiel.next;
 
@@ -105,7 +74,6 @@ public class LinkedListDeque<T> {
         System.out.println();
     }
 
-    /*  Removes and returns the item at the front of the deque. If no such item exists, returns null */
     public T removeFirst() {
         if (size == 0) {
             return null;
@@ -117,7 +85,6 @@ public class LinkedListDeque<T> {
         return ret;
     }
 
-    /* Removes and returns the item at the back of the deque. If no such item exists, returns null */
     public T removeLast() {
         if (size == 0) {
             return null;
@@ -129,8 +96,6 @@ public class LinkedListDeque<T> {
         return ret;
     }
 
-    /* Gets the item at the given index, where 0 is the front, 1 is the next item,
-       and so forth. If no such item exists, returns null. Must not alter the deque */
     public T get(int index) {
         int i = 0;
         ListNode p = sentiel.next;
