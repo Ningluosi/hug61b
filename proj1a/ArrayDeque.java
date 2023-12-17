@@ -55,17 +55,43 @@ public class ArrayDeque<T> {
         if (size == 0) {
             return null;
         }
-        return null;
+        T item = items[++nextFirst % items.length];
+        size--;
+        return item;
     }
 
     /* Removes and returns the item at the back of the deque. If no such item exists, returns null */
     public T removeLast() {
-        return null;
+        if (size == 0) {
+            return null;
+        }
+        T item;
+        nextLast--;
+        if (nextLast < 0) {
+            item = items[items.length - 1];
+        }
+        else {
+            item = items[nextLast];
+        }
+
+        size--;
+        return item;
     }
 
     /* Gets the item at the given index, where 0 is the front, 1 is the next item,
        and so forth. If no such item exists, returns null. Must not alter the deque */
     public T get(int index) {
+        if (size == 0) {
+            return null;
+        }
+
+        for (int i = 0; i < size; i++) {
+            if (i == index) {
+                return items[++nextFirst % items.length];
+            }
+            nextFirst++;
+        }
+
         return null;
     }
 }
