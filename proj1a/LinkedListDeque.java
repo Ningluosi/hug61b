@@ -35,8 +35,7 @@ public class LinkedListDeque<T> {
 
         if (size == 0) {
             sentiel.prev = node;
-        }
-        else {
+        } else {
             sentiel.next.prev = node;
         }
         sentiel.next = node;
@@ -48,8 +47,7 @@ public class LinkedListDeque<T> {
 
         if (size == 0) {
             sentiel.next = node;
-        }
-        else {
+        } else {
             sentiel.prev.next = node;
         }
         sentiel.prev = node;

@@ -63,8 +63,7 @@ public class ArrayDeque<T> {
         nextLast--;
         if (nextLast < 0) {
             item = items[items.length - 1];
-        }
-        else {
+        } else {
             item = items[nextLast];
         }
 
