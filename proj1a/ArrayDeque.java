@@ -12,7 +12,7 @@ public class ArrayDeque<T> {
         nextLast = 1;
     }
 
-    public void resize(int newsize) {
+    private void resize(int newsize) {
         T[] temp = (T[]) new Object[newsize];
 
         for (int i = 0; i < size; i++) {
@@ -23,7 +23,7 @@ public class ArrayDeque<T> {
         nextLast = size;
     }
 
-    public void increaseUsageFactor() {
+    private void increaseUsageFactor() {
         if (items.length >= 16) {
             double usageFactor = (double)size / (double)items.length;
             if (usageFactor < USAGE_FACTOR) {
@@ -35,8 +35,8 @@ public class ArrayDeque<T> {
         if (size == items.length) {
             resize(size * FACTOR);
         }
-        items[nextFirst--] = item;
-        if (nextFirst < 0) {
+        items[nextFirst % items.length] = item;
+        if (--nextFirst < 0) {
             nextFirst = items.length - 1;
         }
         size++;
