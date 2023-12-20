@@ -78,7 +78,8 @@ public class ArrayDeque<T> {
             return null;
         }
 
-        T item = items[++nextFirst % items.length];
+        nextFirst = ++nextFirst % items.length;
+        T item = items[nextFirst];
         size--;
         increaseUsageFactor();
         return item;
@@ -91,7 +92,8 @@ public class ArrayDeque<T> {
         T item;
         nextLast--;
         if (nextLast < 0) {
-            item = items[items.length - 1];
+            nextLast = items.length - 1;
+            item = items[nextLast];
         } else {
             item = items[nextLast];
         }
