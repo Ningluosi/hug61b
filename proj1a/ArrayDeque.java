@@ -25,7 +25,7 @@ public class ArrayDeque<T> {
 
     private void increaseUsageFactor() {
         if (items.length >= 16) {
-            double usageFactor = (double)size / (double)items.length;
+            double usageFactor = (double) size / (double) items.length;
             if (usageFactor < USAGE_FACTOR) {
                 resize(size * FACTOR);
             }
