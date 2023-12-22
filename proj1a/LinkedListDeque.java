@@ -1,9 +1,9 @@
 public class LinkedListDeque<T> {
 
-    public class ListNode {
-        private ListNode prev;
-        private T item;
-        private ListNode next;
+    private class ListNode {
+        public ListNode prev;
+        public T item;
+        public ListNode next;
 
         public ListNode(ListNode prev, T item, ListNode next) {
             this.prev = prev;

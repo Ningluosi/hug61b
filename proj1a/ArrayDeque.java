@@ -108,11 +108,12 @@ public class ArrayDeque<T> {
             return null;
         }
 
+        int next = nextFirst;
         for (int i = 0; i < size; i++) {
             if (i == index) {
-                return items[++nextFirst % items.length];
+                return items[++next % items.length];
             }
-            nextFirst++;
+            next++;
         }
 
         return null;
