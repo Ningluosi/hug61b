@@ -1,5 +1,5 @@
 public class Palindrome {
-    private boolean isPalindromeRecursive(Character first, Character last, Deque<Character> deque, CharacterComparator cc) {
+    private boolean help(char first, char last, Deque<Character> deque, CharacterComparator cc) {
         if (cc == null) {
             if (first != last) {
                 return false;
@@ -13,7 +13,7 @@ public class Palindrome {
         if (deque.isEmpty() || deque.size() == 1) {
             return true;
         }
-        return isPalindromeRecursive(deque.removeFirst(), deque.removeLast(), deque, cc);
+        return help(deque.removeFirst(), deque.removeLast(), deque, cc);
     }
 
     public Palindrome() {
@@ -32,7 +32,7 @@ public class Palindrome {
         if (deque.isEmpty() || deque.size() == 1) {
             return true;
         }
-        return isPalindromeRecursive(deque.removeFirst(), deque.removeLast(), deque, null);
+        return help(deque.removeFirst(), deque.removeLast(), deque, null);
     }
 
     public boolean isPalindrome(String word, CharacterComparator cc) {
@@ -41,6 +41,6 @@ public class Palindrome {
             return true;
         }
 
-        return isPalindromeRecursive(deque.removeFirst(), deque.removeLast(), deque, cc);
+        return help(deque.removeFirst(), deque.removeLast(), deque, cc);
     }
 }
