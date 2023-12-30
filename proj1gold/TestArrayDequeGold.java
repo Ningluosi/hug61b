@@ -20,16 +20,19 @@ public class TestArrayDequeGold {
                 ads1.addFirst(i);
                 message = message + "addFirst(" + i + ")\n";
             } else if (numberBetweenZeroAndNine <= 8 && numberBetweenZeroAndNine < 12) {
-                Integer sadFirst = sad1.removeFirst();
-                Integer adsFirst = ads1.removeFirst();
-                message = message + "removeFirst(): " + sadFirst + "\n";
-                assertEquals(message, sadFirst, adsFirst);
-
+                if (!sad1.isEmpty() && !ads1.isEmpty()) {
+                    Integer sadFirst = sad1.removeFirst();
+                    Integer adsFirst = ads1.removeFirst();
+                    message = message + "removeFirst(): " + sadFirst + "\n";
+                    assertEquals(message, sadFirst, adsFirst);
+                }
             } else {
-                Integer sadLast = sad1.removeLast();
-                Integer adsLast = ads1.removeLast();
-                message = message + "removeLast(): " + sadLast + "\n";
-                assertEquals(message, sadLast, adsLast);
+                if (!sad1.isEmpty() && !ads1.isEmpty()) {
+                    Integer sadLast = sad1.removeLast();
+                    Integer adsLast = ads1.removeLast();
+                    message = message + "removeLast(): " + sadLast + "\n";
+                    assertEquals(message, sadLast, adsLast);
+                }
             }
         }
     }
