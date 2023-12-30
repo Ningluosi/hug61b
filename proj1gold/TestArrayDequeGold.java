@@ -23,14 +23,14 @@ public class TestArrayDequeGold {
                 if (!sad1.isEmpty() && !ads1.isEmpty()) {
                     Integer sadFirst = sad1.removeFirst();
                     Integer adsFirst = ads1.removeFirst();
-                    message = message + "removeFirst(): " + sadFirst + "\n";
+                    message = message + "removeFirst()\n";
                     assertEquals(message, sadFirst, adsFirst);
                 }
             } else {
                 if (!sad1.isEmpty() && !ads1.isEmpty()) {
                     Integer sadLast = sad1.removeLast();
                     Integer adsLast = ads1.removeLast();
-                    message = message + "removeLast(): " + sadLast + "\n";
+                    message = message + "removeLast()\n";
                     assertEquals(message, sadLast, adsLast);
                 }
             }
