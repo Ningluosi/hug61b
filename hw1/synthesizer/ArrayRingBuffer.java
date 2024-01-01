@@ -94,6 +94,7 @@ public class ArrayRingBuffer<T> extends AbstractBoundedQueue<T> implements Itera
         if (isEmpty()) {
             throw new RuntimeException("Ring buffer underflow");
         }
+        first %= capacity;
         return rb[first];
     }
 
